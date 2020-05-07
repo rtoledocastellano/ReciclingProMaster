@@ -1,83 +1,45 @@
 #canvas {
-width: 1200px;
-height: 600px;
-background-color: white;
-margin: 0 auto;
-border: 1px solid black;
+	width: 1200px;
+	height: 600px;
+	background-color: white;
+	margin: 0 auto;
+	border: 1px solid black;
+	position: relative;
 }
 
-#canvas>.cube-papper {
-    width: 60px;
-    height: 120px;
-    background-color: blue;
-    display:block;
-    position: relative;
-    left: 570px;
-    top: 480px;
+#canvas > div[class*="cube"] {
+	width: 60px;
+	height: 120px;
+	display: block;
+	position: absolute;
+	left: 570px;
+	top: 480px;
 }
 
-#canvas>.cube-plastic {
-    width: 60px;
-    height: 120px;
-    background-color: yellow;
-    display:block;
-    position: relative;
-    left: 570px;
-    top: 480px;
+#canvas > div[class*="rubish"] {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	position: absolute;
+	border-radius: 50%;
 }
 
-#canvas>.cube-organic {
-    width: 60px;
-    height: 120px;
-    background-color: black;
-    display:block;
-    position: relative;
-    left: 570px;
-    top: 480px;
+#canvas > .cube-papper,
+#canvas > .rubish-papper {
+	background-color: blue;
 }
 
-#canvas>.cube-cristal {
-    width: 60px;
-    height: 120px;
-    background-color: green;
-    display:block;
-    position: relative;
-    left: 570px;
-    top: 480px;
+#canvas > .cube-plastic,
+#canvas > .rubish-plastic {
+	background-color: yellow;
 }
 
-#canvas>.rubish-papper {
-    width: 20px;
-    height: 20px;
-    background-color: blue;
-    display:inline-block;
-    position: relative;
-    border-radius: 50%;
+#canvas > .cube-organic,
+#canvas > .rubish-organic {
+	background-color: black;
 }
 
-#canvas>.rubish-plastic {
-    width: 20px;
-    height: 20px;
-    background-color: yellow;
-    display:inline-block;
-    position: relative;
-    border-radius: 50%;
-}
-
-#canvas>.rubish-organic {
-    width: 20px;
-    height: 20px;
-    background-color: black;
-    display:inline-block;
-    position: relative;
-    border-radius: 50%;
-}
-
-#canvas>.rubish-cristal {
-    width: 20px;
-    height: 20px;
-    background-color: green;
-    display:inline-block;
-    position: relative;
-    border-radius: 50%;
+#canvas > .cube-cristal,
+#canvas > .rubish-cristal {
+	background-color: green;
 }
