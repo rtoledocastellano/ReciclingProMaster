@@ -27,4 +27,53 @@ function changeRubish(){
     }
 }
 
+function generateRubish() {
+    var parent = document.getElementById('canvas');
+    var firstChild = document.getElementById('cube');
+    var rubish = document.createElement('div');
+    var rubishType = random();
+    switch(rubishType) {
+        case 1:
+            rubish.setAttribute('class','rubish-papper');
+            rubish.setAttribute('value','1');
+            break;
+        case 2:
+            rubish.setAttribute('class','rubish-plastic');
+            rubish.setAttribute('value','2');
+            break;
+        case 3:
+            rubish.setAttribute('class','rubish-organic');
+            rubish.setAttribute('value','3');
+            break;
+        case 4:
+            rubish.setAttribute('class','rubish-cristal');
+            rubish.setAttribute('value','4');
+            break;
+    }    
+    parent.insertBefore(rubish,firstChild);
+    var top = Math.floor(Math.random() * 350 + 40);
+    var left = Math.floor(Math.random() * 1000 + 100);
+    rubish.style.top = top + 'px';
+    rubish.style.left = left + 'px';
+}
+
+function deleteRubish() {
+    var rubish = document.getElementsByClassName('rubish-cristal','rubish-organic','rubish-pastic','rubish-papper');
+    var parent = document.getElementById('canvas');
+    parent.removeChild(rubish);
+}
+
+function checkCorrect(event){
+   
+
+}
+
+function activateRubish(){
+    var rubish = document.getElementsByClassName('rubish-cristal','rubish-organic','rubish-pastic','rubish-papper');
+    for (var i= 0; i<rubish.length;i++) {
+    rubish[i].addEventListener(onclick,checkCorrect);
+    }
+}
+
 setInterval(changeRubish,5000);
+setInterval(generateRubish,3000);
