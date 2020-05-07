@@ -1,5 +1,7 @@
 //Select rubish
 //1 - Papper; 2- Plastic; 3-Organic; 4-Cristal
+var points = 0;
+
 function changeRubish(){
     var cube = document.getElementById("cube");
     var rubishType = random();
@@ -57,21 +59,28 @@ function generateRubish() {
     rubish.style.left = left + 'px';
 }
 
-function deleteRubish() {
+/*function deleteRubish(element) {
     var rubish = document.getElementsByClassName('rubish-cristal','rubish-organic','rubish-pastic','rubish-papper');
     var parent = document.getElementById('canvas');
     parent.removeChild(rubish);
-}
+}*/
 
-function checkCorrect(event){
-   
-
+function checkCorrect(event){ 
+var rubish = event.target;
+var cube = document.getElementById('cube');
+    if(rubish.value == cube.getAttribute('value')) {
+        points++;
+    }
+    else {
+        points--;
+    }
+removeItem(event.currentTarget);
 }
 
 function activateRubish(){
     var rubish = document.getElementsByClassName('rubish-cristal','rubish-organic','rubish-pastic','rubish-papper');
     for (var i= 0; i<rubish.length;i++) {
-    rubish[i].addEventListener(onclick,checkCorrect);
+    rubish[i].addEventListener('click',checkCorrect());
     }
 }
 

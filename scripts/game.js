@@ -4,8 +4,8 @@ function random () {
 return Math.floor(Math.random()*4 + 1);
 }
 
-    setInterval(changeRubish,5000);
-    setInterval(generateRubish,3000);
+//#canvas>div[class*=cube]
+
 
 
 
