@@ -57,30 +57,30 @@ function generateRubish() {
     var left = Math.floor(Math.random() * 1000 + 100);
     rubish.style.top = top + 'px';
     rubish.style.left = left + 'px';
+    activateRubish();
 }
 
-/*function deleteRubish(element) {
-    var rubish = document.getElementsByClassName('rubish-cristal','rubish-organic','rubish-pastic','rubish-papper');
-    var parent = document.getElementById('canvas');
-    parent.removeChild(rubish);
-}*/
+function removeItem(e) {
+    var item = e.currentTarget;
+    item.parentNode.removeChild(item);
+}
 
-function checkCorrect(event){ 
-var rubish = event.target;
+function checkCorrect(e){ //Esta funcion no funciona
+var rubish = e.currentTarget;
 var cube = document.getElementById('cube');
-    if(rubish.value == cube.getAttribute('value')) {
+    if(rubish.nodeValue == cube.getAttribute('value')) {
         points++;
     }
     else {
         points--;
     }
-removeItem(event.currentTarget);
+removeItem(e);
 }
 
 function activateRubish(){
     var rubish = document.getElementsByClassName('rubish-cristal','rubish-organic','rubish-pastic','rubish-papper');
     for (var i= 0; i<rubish.length;i++) {
-    rubish[i].addEventListener('click',checkCorrect());
+    rubish[i].addEventListener('click',checkCorrect);
     }
 }
 
