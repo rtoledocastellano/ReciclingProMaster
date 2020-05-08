@@ -69,17 +69,16 @@ function checkCorrect(e){
 var rubish = e.currentTarget;
 var cube = document.getElementById('cube');
     if(rubish.getAttribute('value') == cube.getAttribute('value')) {
-        points++;
+        points+=5;
     }
     else {
-        points--;
+        points-=5;
     }
 removeItem(e); 
 }
 
 function activateRubish(){
-    //hay un error con el selector de esta linea
-    var rubish = document.querySelector('.rubish-cristal.rubish-organic.rubish-pastic.rubish-papper');
+    var rubish = document.querySelectorAll(".rubish-cristal,.rubish-organic,.rubish-pastic,.rubish-papper");
     for (var i= 0; i<rubish.length;i++) {
     rubish[i].addEventListener('click',checkCorrect);
     }
