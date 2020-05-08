@@ -65,20 +65,21 @@ function removeItem(e) {
     item.parentNode.removeChild(item);
 }
 
-function checkCorrect(e){ //Esta funcion no funciona
+function checkCorrect(e){
 var rubish = e.currentTarget;
 var cube = document.getElementById('cube');
-    if(rubish.nodeValue == cube.getAttribute('value')) {
+    if(rubish.getAttribute('value') == cube.getAttribute('value')) {
         points++;
     }
     else {
         points--;
     }
-removeItem(e);
+removeItem(e); 
 }
 
 function activateRubish(){
-    var rubish = document.getElementsByClassName('rubish-cristal','rubish-organic','rubish-pastic','rubish-papper');
+    //hay un error con el selector de esta linea
+    var rubish = document.querySelector('.rubish-cristal.rubish-organic.rubish-pastic.rubish-papper');
     for (var i= 0; i<rubish.length;i++) {
     rubish[i].addEventListener('click',checkCorrect);
     }
