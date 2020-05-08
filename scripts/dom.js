@@ -75,6 +75,7 @@ var cube = document.getElementById('cube');
         points-=5;
     }
 removeItem(e); 
+updatePoints();
 }
 
 function activateRubish(){
@@ -84,5 +85,9 @@ function activateRubish(){
     }
 }
 
+function updatePoints(){
+    var score = document.getElementById('score');
+    score.innerHTML = `${points} points`;
+}
 setInterval(changeRubish,5000);
 setInterval(generateRubish,3000);
