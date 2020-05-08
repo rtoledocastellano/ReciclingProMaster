@@ -83,10 +83,20 @@ position:relative;
     border-radius: 50%;
 }
 
-#score {
+#score,#timer {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 30px;
     position: absolute;
-    top: 15px;
-    left: 1000px;
 }
+
+#score {
+    top: 15px;
+    right: 50px;
+}
+
+#timer {
+    top: 15px;
+    left: 50px;
+}
+
+

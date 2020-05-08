@@ -1,6 +1,7 @@
 //Select rubish
 //1 - Papper; 2- Plastic; 3-Organic; 4-Cristal
 var points = 0;
+var timeLeft = 60;
 
 function changeRubish(){
     var cube = document.getElementById("cube");
@@ -79,7 +80,7 @@ updatePoints();
 }
 
 function activateRubish(){
-    var rubish = document.querySelectorAll(".rubish-cristal,.rubish-organic,.rubish-pastic,.rubish-papper");
+    var rubish = document.querySelectorAll(".rubish-cristal,.rubish-organic,.rubish-plastic,.rubish-papper");
     for (var i= 0; i<rubish.length;i++) {
     rubish[i].addEventListener('click',checkCorrect);
     }
@@ -89,5 +90,6 @@ function updatePoints(){
     var score = document.getElementById('score');
     score.innerHTML = `${points} points`;
 }
+
 setInterval(changeRubish,5000);
 setInterval(generateRubish,3000);
