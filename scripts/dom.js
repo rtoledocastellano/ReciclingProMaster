@@ -1,7 +1,7 @@
 //Select rubish
 //1 - Papper; 2- Plastic; 3-Organic; 4-Cristal
 var points = 0;
-var timeLeft = 60;
+var timeLeft = 30.0;
 
 function changeRubish(){
     var cube = document.getElementById("cube");
@@ -54,7 +54,7 @@ function generateRubish() {
             break;
     }    
     parent.insertBefore(rubish,firstChild);
-    var top = Math.floor(Math.random() * 350 + 40);
+    var top = Math.floor(Math.random() * 350 + 80);
     var left = Math.floor(Math.random() * 1000 + 100);
     rubish.style.top = top + 'px';
     rubish.style.left = left + 'px';
@@ -91,5 +91,14 @@ function updatePoints(){
     score.innerHTML = `${points} points`;
 }
 
-setInterval(changeRubish,5000);
-setInterval(generateRubish,3000);
+var downloadTimer = setInterval(function(){
+    if (timeLeft <= 0) {
+        clearInterval(downloadTimer);
+        document.getElementById('timer').innerHTML = 0.00;
+    }
+    timeLeft -= 0.1;
+    document.getElementById('timer').innerHTML = `${timeLeft}`;
+},100)
+
+var bin = setInterval(changeRubish,5000);
+var waste = setInterval(generateRubish,1000);
