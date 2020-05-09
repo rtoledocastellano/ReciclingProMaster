@@ -1,8 +1,4 @@
-//Function from 1 to 4 to set the type of waste
 //1 - Papper; 2- Plastic; 3-Organic; 4-Cristal
-
-//#canvas>div[class*=cube]
-
 function ReciclingProMaster() {
     var self = this;
     this.points = 0;
@@ -91,4 +87,3 @@ function ReciclingProMaster() {
     this.differentCube = setInterval(this.changeCube,2000);
     this.rubishAddition = setInterval(this.generateRubish,1000);
 }
-

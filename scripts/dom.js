@@ -1,7 +1,6 @@
 window.onload = function() {
     document.addEventListener('keyup',startGame);//Al pulsar espacio queremos cambiar de escena
-
-}
+} 
 
 function startGame() {
     var parent = document.getElementById('canvas');
@@ -24,5 +23,6 @@ function startGame() {
     parent.appendChild(timer);
     parent.appendChild(score);
     parent.appendChild(cube);
+
     var game = new ReciclingProMaster;
 }
