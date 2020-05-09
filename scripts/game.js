@@ -9,7 +9,7 @@ return Math.floor(Math.random()*num + 1);
 function ReciclingProMaster() {
 var self = this;
 this.points = 0;
-this.timeLeft = 10.00;
+this.timeLeft = 30.00;
 this.downloadTimer;
 
 this.random = function(num) {
@@ -124,4 +124,3 @@ this.trial2 = setInterval(this.generateRubish,1000);
 
 }
 
-var game = new ReciclingProMaster;
