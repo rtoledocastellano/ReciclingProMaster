@@ -1,11 +1,11 @@
 //Select rubish
 //1 - Papper; 2- Plastic; 3-Organic; 4-Cristal
 var points = 0;
-var timeLeft = 30.0;
+var timeLeft = 30.00;
 
 function changeRubish(){
     var cube = document.getElementById("cube");
-    var rubishType = random();
+    var rubishType = random(4);
     switch(rubishType) {
         case 1:
             cube.removeAttribute('class');
@@ -86,6 +86,13 @@ function activateRubish(){
     }
 }
 
+function desactivateRubish(){
+    var rubish = document.querySelectorAll(".rubish-cristal,.rubish-organic,.rubish-plastic,.rubish-papper");
+    for (var i= 0; i<rubish.length;i++) {
+    rubish[i].removeEventListener('click',checkCorrect);
+    }
+}
+
 function updatePoints(){
     var score = document.getElementById('score');
     score.innerHTML = `${points} points`;
@@ -96,13 +103,13 @@ var downloadTimer = setInterval(function(){
         clearInterval(downloadTimer);
         clearInterval(trial1);
         clearInterval(trial2);
-        document.getElementById('timer').innerHTML = 0.00;
+        document.getElementById('timer').innerHTML = '0.00';
+        desactivateRubish();
     }
     else {
-        timeLeft -= 0.1;
-    document.getElementById('timer').innerHTML = `${timeLeft}`;
+        timeLeft -= 0.01;
+    document.getElementById('timer').innerHTML = `${timeLeft.toFixed(2)}`;
     }
-},100)
-
+},10)
 var trial1 = setInterval(changeRubish,5000);
 var trial2 = setInterval(generateRubish,1000);
