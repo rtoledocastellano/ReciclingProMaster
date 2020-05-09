@@ -94,11 +94,15 @@ function updatePoints(){
 var downloadTimer = setInterval(function(){
     if (timeLeft <= 0) {
         clearInterval(downloadTimer);
+        clearInterval(trial1);
+        clearInterval(trial2);
         document.getElementById('timer').innerHTML = 0.00;
     }
-    timeLeft -= 0.1;
+    else {
+        timeLeft -= 0.1;
     document.getElementById('timer').innerHTML = `${timeLeft}`;
+    }
 },100)
 
-var bin = setInterval(changeRubish,5000);
-var waste = setInterval(generateRubish,1000);
+var trial1 = setInterval(changeRubish,5000);
+var trial2 = setInterval(generateRubish,1000);
