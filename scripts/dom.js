@@ -1,12 +1,16 @@
 //Select rubish
 //1 - Papper; 2- Plastic; 3-Organic; 4-Cristal
-var points = 0;
+/*var points = 0;
 var timeLeft = 30.00;
 
-function changeRubish(){
+function random (num) {
+    return Math.floor(Math.random()*num + 1);
+}
+
+function changeRubish() {
     var cube = document.getElementById("cube");
     var rubishType = random(4);
-    switch(rubishType) {
+    switch(rubishType) { //Refactorizar esta parte
         case 1:
             cube.removeAttribute('class');
             cube.setAttribute('class','cube-papper');
@@ -34,7 +38,7 @@ function generateRubish() {
     var parent = document.getElementById('canvas');
     var firstChild = document.getElementById('cube');
     var rubish = document.createElement('div');
-    var rubishType = random();
+    var rubishType = random(4);
     switch(rubishType) {
         case 1:
             rubish.setAttribute('class','rubish-papper');
@@ -54,8 +58,8 @@ function generateRubish() {
             break;
     }    
     parent.insertBefore(rubish,firstChild);
-    var top = Math.floor(Math.random() * 350 + 80);
-    var left = Math.floor(Math.random() * 1000 + 100);
+    var top = random(350) + 80;
+    var left = random(1000) + 100;
     rubish.style.top = top + 'px';
     rubish.style.left = left + 'px';
     activateRubish();
@@ -69,7 +73,8 @@ function removeItem(e) {
 function checkCorrect(e){
 var rubish = e.currentTarget;
 var cube = document.getElementById('cube');
-    if(rubish.getAttribute('value') == cube.getAttribute('value')) {
+//if (parseInt(rubish)===parseInt(cube)) p+
+=    if(rubish.getAttribute('value') === cube.getAttribute('value')) {
         points+=5;
     }
     else {
@@ -80,13 +85,14 @@ updatePoints();
 }
 
 function activateRubish(){
-    var rubish = document.querySelectorAll(".rubish-cristal,.rubish-organic,.rubish-plastic,.rubish-papper");
+    var rubish = document.querySelectorAll("[class*=rubish]")
+    //(".rubish-cristal,.rubish-organic,.rubish-plastic,.rubish-papper");
     for (var i= 0; i<rubish.length;i++) {
     rubish[i].addEventListener('click',checkCorrect);
     }
 }
 
-function desactivateRubish(){
+function desactivateRubish(){ //juntar a la funcion activateRubish
     var rubish = document.querySelectorAll(".rubish-cristal,.rubish-organic,.rubish-plastic,.rubish-papper");
     for (var i= 0; i<rubish.length;i++) {
     rubish[i].removeEventListener('click',checkCorrect);
@@ -113,3 +119,4 @@ var downloadTimer = setInterval(function(){
 },10)
 var trial1 = setInterval(changeRubish,5000);
 var trial2 = setInterval(generateRubish,1000);
+*/
