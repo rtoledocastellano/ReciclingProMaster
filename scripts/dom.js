@@ -2,6 +2,9 @@ window.onload = function() {
     document.addEventListener('keyup',startGame);//Al pulsar espacio queremos cambiar de escena
 } 
 
+//window.prompt("Please insert the number of players");
+var game;
+
 function startGame() {
     var parent = document.getElementById('canvas');
     var intro = document.getElementById('intro');
@@ -16,13 +19,16 @@ function startGame() {
             
     var score = document.createElement('div');
     score.setAttribute('id','score');
-    score.innerHTML = '0 points';
+    score.innerHTML = '0 <i class="fas fa-globe-europe"></i>';
     
     parent.removeChild(intro); //Eliminamos la intro del juego
     
     parent.appendChild(timer);
     parent.appendChild(score);
     parent.appendChild(cube);
-
-    var game = new ReciclingProMaster;
+    
+    
+    game = new ReciclingProMaster (); 
+    game.init();
+    console.log(game.points);
 }

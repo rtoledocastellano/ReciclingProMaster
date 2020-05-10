@@ -3,7 +3,7 @@ function ReciclingProMaster() {
     var self = this;
     this.points = 0;
     this.timeLeft = 30.00;
-    this.downloadTimer;
+    //this.downloadTimer;
     this.binType = ['papper','plastic','organic','cristal'];
 
     this.random = function(num) {
@@ -68,22 +68,24 @@ function ReciclingProMaster() {
 
     this.updatePoints = function() {
         let score = document.getElementById('score');
-        score.innerHTML = `${self.points} points`;
+        score.innerHTML = `${self.points} <i class="fas fa-globe-europe"></i>`;
     }
 
-    downloadTimer = setInterval(function(){
+    this.init = function() {
+        var downloadTimer = setInterval(function(){
         if (self.timeLeft <= 0) {
             clearInterval(downloadTimer);
-            clearInterval(self.differentCube);
-            clearInterval(self.rubishAddition);
-            document.getElementById('timer').innerHTML = '0.00';
+            clearInterval(differentCube);
+            clearInterval(rubishAddition);
+            document.getElementById('timer').innerHTML = '<i class="fas fa-clock"></i>  0.00';
             self.rubishStatus('disable');
         }
         else {
             self.timeLeft -= 0.01;
-            document.getElementById('timer').innerHTML = `${self.timeLeft.toFixed(2)}`;
+            document.getElementById('timer').innerHTML = `<i class="fas fa-clock"></i>  ${self.timeLeft.toFixed(2)}`;
         }
     },10);
-    this.differentCube = setInterval(this.changeCube,2000);
-    this.rubishAddition = setInterval(this.generateRubish,1000);
+        var differentCube = setInterval(this.changeCube,2000);
+        var rubishAddition = setInterval(this.generateRubish,1000);
+    }
 }

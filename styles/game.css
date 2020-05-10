@@ -57,8 +57,11 @@ position:relative;
 
 #score,#timer {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 30px;
+    font-size: 40px;
     position: absolute;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px rgba(0,0,0,0.5);
 }
 
 #score {
