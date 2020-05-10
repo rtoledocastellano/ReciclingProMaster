@@ -5,7 +5,7 @@ body {
 #canvas {
 width: 1200px;
 height: 600px;
-background-image: url("/assets/Canvas.png");
+background-image: url("/assets/images/Canvas.png");
 background-color: rgba(255,255,255,1);
 border-radius: 5px;
 margin: 0 auto;
@@ -37,28 +37,28 @@ position:relative;
 }
 
 #canvas>.cube-papper{
-    background-image: url("/assets/blue-rubish.png");  
+    background-image: url("/assets/images/blue-rubish.png");  
 }
 #canvas>.rubish-papper {
     background-color: blue;
 }
 
 #canvas>.cube-plastic {
-    background-image: url("/assets/yellow-rubish.png"); 
+    background-image: url("/assets/images/yellow-rubish.png"); 
 }
 #canvas>.rubish-plastic {
     background-color: yellow;
 }
 
 #canvas>.cube-organic {
-    background-image: url("/assets/black-rubish.png"); 
+    background-image: url("/assets/images/black-rubish.png"); 
 }
 #canvas>.rubish-organic {
     background-color: black;
 }
 
 #canvas>.cube-cristal {
-    background-image: url("/assets/green-rubish.png"); 
+    background-image: url("/assets/images/green-rubish.png"); 
 }
 #canvas>.rubish-cristal {
     background-color: green;
@@ -86,7 +86,7 @@ position:relative;
 #intro {
     width:800px;
     height:400px;
-    background-image: url("/assets/Intro.png");
+    background-image: url("/assets/images/Intro.png");
     border-radius: 20px;
     border: 2px solid black;
     position: absolute;
