@@ -5,6 +5,11 @@ function ReciclingProMaster() {
     this.timeLeft = 30.00;
     //this.downloadTimer;
     this.binType = ['papper','plastic','organic','cristal'];
+    this.images = [['/assets/images/paper.png','/assets/images/paper2.png'],
+    ['/assets/images/plastic1.png','/assets/images/plastic2.png','/assets/images/plastic3.png'],
+    ['assets/images/organic1.png','assets/images/organic2.png','assets/images/organic3.png'],
+    ['assets/images/glass1.png']];
+    this.audio = [new Audio('/assets/sounds/correct.wav'),new Audio('/assets/sounds/wrong.wav')]
 
     this.random = function(num) {
         return Math.floor(Math.random()*num + 1);
@@ -22,9 +27,10 @@ function ReciclingProMaster() {
         let parent = document.getElementById('canvas'); //Select the parentNode
         let firstChild = document.getElementById('cube'); //Select firstChild
         let rubish = document.createElement('div'); //Create the rubish
-        let rubishType = self.random(4); //Generate new binType
+        let rubishType = self.random(4); //Generate new binType from 1 to 4
         rubish.setAttribute('value',`${rubishType}`); //Add the fixed value
-        rubish.setAttribute('class',`rubish-${self.binType[rubishType-1]}`) //Add the class
+        rubish.setAttribute('class',`rubish-${self.binType[rubishType-1]}`) //Add the class 
+        rubish.style.backgroundImage = "url("+self.images[rubishType-1][self.random(self.images[rubishType-1].length) - 1]+")";
   
         parent.insertBefore(rubish,firstChild); //All the elements will be inserted before the cube
         let top = self.random(400) + 80;
@@ -50,6 +56,18 @@ function ReciclingProMaster() {
         self.points += (correct*5);
         self.removeItem(e); //Remove the clicked item
         self.updatePoints(); //Update the score on screen
+        self.playAudio(correct);
+    }
+
+    this.playAudio = function(num) {
+        switch (num) {
+            case 1:
+                self.audio[0].play();
+                break;
+            case -1:
+                self.audio[1].play();
+                break;
+        }
     }
 
     this.rubishStatus = function(action){
@@ -85,7 +103,7 @@ function ReciclingProMaster() {
             document.getElementById('timer').innerHTML = `<i class="fas fa-clock"></i>  ${self.timeLeft.toFixed(2)}`;
         }
     },10);
-        var differentCube = setInterval(this.changeCube,2000);
-        var rubishAddition = setInterval(this.generateRubish,1000);
+        var differentCube = setInterval(this.changeCube,4000);
+        var rubishAddition = setInterval(this.generateRubish,1500);
     }
 }

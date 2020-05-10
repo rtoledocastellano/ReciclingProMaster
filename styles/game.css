@@ -25,12 +25,13 @@ position:relative;
 }
 
 #canvas>[class*="rubish"] {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     display:inline-block;
     position: absolute;
-    border-radius: 50%;
+    background-size: cover;
 }
+
 #canvas>[class*="rubish"]:hover {
     transform: scale(1.2);
     transition-duration: 0.2;
@@ -39,29 +40,17 @@ position:relative;
 #canvas>.cube-papper{
     background-image: url("/assets/images/blue-rubish.png");  
 }
-#canvas>.rubish-papper {
-    background-color: blue;
-}
 
 #canvas>.cube-plastic {
     background-image: url("/assets/images/yellow-rubish.png"); 
-}
-#canvas>.rubish-plastic {
-    background-color: yellow;
 }
 
 #canvas>.cube-organic {
     background-image: url("/assets/images/black-rubish.png"); 
 }
-#canvas>.rubish-organic {
-    background-color: black;
-}
 
 #canvas>.cube-cristal {
     background-image: url("/assets/images/green-rubish.png"); 
-}
-#canvas>.rubish-cristal {
-    background-color: green;
 }
 
 #score,#timer {
