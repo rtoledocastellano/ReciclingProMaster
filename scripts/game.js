@@ -27,7 +27,7 @@ function ReciclingProMaster() {
         rubish.setAttribute('class',`rubish-${self.binType[rubishType-1]}`) //Add the class
   
         parent.insertBefore(rubish,firstChild); //All the elements will be inserted before the cube
-        let top = self.random(350) + 80;
+        let top = self.random(400) + 80;
         let left = self.random(1000) + 100; //Generation of random position in the canvas
         rubish.style.top = top + 'px';
         rubish.style.left = left + 'px'; //Draw it on the canvas

@@ -30,5 +30,4 @@ function startGame() {
     
     game = new ReciclingProMaster (); 
     game.init();
-    console.log(game.points);
 }
