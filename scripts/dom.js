@@ -1,6 +1,12 @@
 window.onload = function() {
-    document.addEventListener('keyup',startGame);//Al pulsar espacio queremos cambiar de escena
-} 
+    document.body.onkeyup = function(e){
+        if(e.keyCode == 32){
+            startGame()
+        }
+    }
+    //document.addEventListener('keyup',startGame);//Al pulsar espacio queremos cambiar de escena
+    //document.addEventListener('keyup',soundGame);
+}
 
 //window.prompt("Please insert the number of players");
 var game;
@@ -30,4 +36,29 @@ function startGame() {
     
     game = new ReciclingProMaster (); 
     game.init();
+
+    if (game.timeLeft <= 0) {
+        endGame(game.points);
+    }
+}
+
+function endGame(num){
+    var rubish = document.querySelectorAll("[class*=rubish]");
+    var cube = document.getElementById('cube');
+    var parent = document.getElementById('canvas');
+
+    //Remove all the waste that is on the screen
+    for (var i=0; i < rubish.length; i++) {
+        parent.removeChild(rubish[i]);
+    }
+
+    //Remove the cube
+    parent.removeChild(cube);
+
+    //create a new div to insert
+    var score = document.createElement('div');
+    score.setAttribute('id','puntuation');
+    score.innerHTML = "Gretta Thunder is not so happy"
+
+    parent.appendChild(score);
 }

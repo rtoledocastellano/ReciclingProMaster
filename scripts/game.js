@@ -97,6 +97,7 @@ function ReciclingProMaster() {
             clearInterval(rubishAddition);
             document.getElementById('timer').innerHTML = '<i class="fas fa-clock"></i>  0.00';
             self.rubishStatus('disable');
+            self.endGame(self.points);
         }
         else {
             self.timeLeft -= 0.01;
@@ -105,5 +106,52 @@ function ReciclingProMaster() {
     },10);
         var differentCube = setInterval(this.changeCube,4000);
         var rubishAddition = setInterval(this.generateRubish,1500);
+        
+        
     }
+
+    this.endGame = function (){
+        var rubish = document.querySelectorAll("[class*=rubish]");
+        var cube = document.getElementById('cube');
+        var parent = document.getElementById('canvas');
+    
+        //Remove all the waste that is on the screen
+        for (var i=0; i < rubish.length; i++) {
+            parent.removeChild(rubish[i]);
+        }
+    
+        //Remove the cube
+        parent.removeChild(cube);
+    
+        //create a new div to insert
+        var score = document.createElement('div');
+        
+        if (self.points >= 60) {
+            score.setAttribute('id','puntuation');
+            score.innerHTML = "Gretta is always angry but she likes you"
+        }
+
+        if (self.points < 60) {
+            score.setAttribute('id','puntuation');
+            score.innerHTML = "There is hope at all"
+        }
+
+        if (self.points < 40) {
+            score.setAttribute('id','puntuation');
+            score.innerHTML = "You are an awesome PlanetKiller"
+        }
+        
+        if (self.points < 20) {
+            score.setAttribute('id','puntuation');
+            score.innerHTML = "Advice: avoid to be near Greta"
+        }
+        
+        if (self.points < 0) {
+        score.setAttribute('id','puntuation');
+        score.innerHTML = "You're the next Trump"
+        }
+        
+        parent.appendChild(score);
+    }
+
 }

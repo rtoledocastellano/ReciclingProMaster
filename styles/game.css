@@ -82,4 +82,18 @@ position:relative;
     margin: 100px 200px;
 }
 
+#puntuation  {
+    width:400px;
+    height:200px;
+    border-radius: 20px;
+    background-color:white;
+    border: 2px solid black;
+    position: absolute;
+    margin: 200px 400px;
+    color:rgb(187, 16, 202);
+    font-size: 18px;
+    line-height: 300px;
+    text-align: center;
+}
+
 
