@@ -41,24 +41,3 @@ function startGame() {
         endGame(game.points);
     }
 }
-
-function endGame(num){
-    var rubish = document.querySelectorAll("[class*=rubish]");
-    var cube = document.getElementById('cube');
-    var parent = document.getElementById('canvas');
-
-    //Remove all the waste that is on the screen
-    for (var i=0; i < rubish.length; i++) {
-        parent.removeChild(rubish[i]);
-    }
-
-    //Remove the cube
-    parent.removeChild(cube);
-
-    //create a new div to insert
-    var score = document.createElement('div');
-    score.setAttribute('id','puntuation');
-    score.innerHTML = "Gretta Thunder is not so happy"
-
-    parent.appendChild(score);
-}
