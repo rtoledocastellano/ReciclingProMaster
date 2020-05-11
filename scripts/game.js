@@ -2,8 +2,7 @@
 function ReciclingProMaster() {
     var self = this;
     this.points = 0;
-    this.timeLeft = 5.00;
-    //this.downloadTimer;
+    this.timeLeft = 60.00;
     this.binType = ['papper','plastic','organic','cristal'];
     this.images = [['/assets/images/paper.png','/assets/images/paper2.png'],
     ['/assets/images/plastic1.png','/assets/images/plastic2.png','/assets/images/plastic3.png'],
@@ -127,28 +126,28 @@ function ReciclingProMaster() {
         var score = document.createElement('div');
         
         if (self.points >= 60) {
-            score.setAttribute('id','puntuation');
-            score.innerHTML = "Gretta is always angry but she likes you"
+            score.setAttribute('id','puntuation4');
+            score.innerHTML = `${self.points} <i class="fas fa-globe-europe"></i>`
         }
 
         if (self.points < 60) {
-            score.setAttribute('id','puntuation');
-            score.innerHTML = "There is hope at all"
+            score.setAttribute('id','puntuation3');
+            score.innerHTML = `${self.points} <i class="fas fa-globe-europe"></i>`
         }
 
         if (self.points < 40) {
-            score.setAttribute('id','puntuation');
-            score.innerHTML = "You are an awesome PlanetKiller"
+            score.setAttribute('id','puntuation2');
+            score.innerHTML = `${self.points} <i class="fas fa-globe-europe"></i>`
         }
         
         if (self.points < 20) {
-            score.setAttribute('id','puntuation');
-            score.innerHTML = "Advice: avoid to be near Greta"
+            score.setAttribute('id','puntuation1');
+            score.innerHTML = `${self.points} <i class="fas fa-globe-europe"></i>`
         }
         
         if (self.points < 0) {
-        score.setAttribute('id','puntuation');
-        score.innerHTML = "You're the next Trump"
+        score.setAttribute('id','puntuation0');
+        score.innerHTML = `${self.points} <i class="fas fa-globe-europe"></i>`
         }
         
         parent.appendChild(score);
