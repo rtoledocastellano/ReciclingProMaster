@@ -1,37 +1,65 @@
+body {
+    background-color: gray;
+}
+
 #canvas {
-	width: 1200px;
-	height: 600px;
-	background-color: white;
-	margin: 0 auto;
-	border: 1px solid black;
-	position: relative;
+width: 1200px;
+height: 600px;
+background-image: url("/assets/images/Canvas2.png");
+background-color: rgba(255,255,255,1);
+border-radius: 5px;
+margin: 0 auto;
+border: 1px solid black;
+top: calc(50vh - 300px);
+position:relative;
 }
 
-#canvas > div[class*="cube"] {
-	width: 60px;
-	height: 120px;
-	display: block;
-	position: absolute;
-	left: 570px;
-	top: 480px;
+#canvas>div[class*="cube"] {
+    width: 80px;
+    height: 80px;
+    display:block;
+    position: absolute;
+    left: 570px;
+    top: 510px;
+    transition-duration: 0.2;
 }
 
-#canvas > div[class*="rubish"] {
-	width: 20px;
-	height: 20px;
-	display: inline-block;
-	position: absolute;
-	border-radius: 50%;
+#canvas>[class*="rubish"] {
+    width: 60px;
+    height: 60px;
+    display:inline-block;
+    position: absolute;
+    background-size: cover;
 }
 
-#canvas > .cube-papper,
-#canvas > .rubish-papper {
-	background-color: blue;
+#canvas>[class*="rubish"]:hover {
+    transform: scale(1.2);
+    transition-duration: 0.2;
 }
 
-#canvas > .cube-plastic,
-#canvas > .rubish-plastic {
-	background-color: yellow;
+#canvas>.cube-papper{
+    background-image: url("/assets/images/blue-rubish.png");  
+}
+
+#canvas>.cube-plastic {
+    background-image: url("/assets/images/yellow-rubish.png"); 
+}
+
+#canvas>.cube-organic {
+    background-image: url("/assets/images/black-rubish.png"); 
+}
+
+#canvas>.cube-cristal {
+    background-image: url("/assets/images/green-rubish.png"); 
+}
+
+#score,#timer {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 40px;
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px rgba(0,0,0,0.5);
 }
 
 #canvas > .cube-organic,
@@ -43,3 +71,56 @@
 #canvas > .rubish-cristal {
 	background-color: green;
 }
+<<<<<<< HEAD
+=======
+
+#intro {
+    width:800px;
+    height:400px;
+    background-image: url("/assets/images/Intro.png");
+    border-radius: 20px;
+    border: 2px solid black;
+    position: absolute;
+    margin: 100px 200px;
+}
+
+[id*=puntuation]  {
+    width:400px;
+    height:200px;
+    top: 200px;
+    left: 400px;
+    background-color: rgba(47, 44, 68, 1);
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    border: 2px solid black;
+    position: absolute;
+    color: white;
+    font-size: 30px;
+    text-align: right;
+    line-height: 60px;
+}
+
+#puntuation0 {
+    background-image: url('/assets/images/greta0.png');
+}
+
+#puntuation1 {
+    background-image: url('/assets/images/greta1.png');
+}
+
+#puntuation2 {
+    background-image: url('/assets/images/greta2.png');
+}
+
+#puntuation3 {
+    background-image: url('/assets/images/greta3.png');
+}
+
+#puntuation4 {
+    background-image: url('/assets/images/greta4.png');
+}
+
+
+
+>>>>>>> Dev
