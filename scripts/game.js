@@ -2,7 +2,7 @@
 function ReciclingProMaster() {
     var self = this;
     this.points = 0;
-    this.timeLeft = 60.00;
+    this.timeLeft = 30.00;
     this.binType = ['papper','plastic','organic','cristal'];
     this.images = [['/assets/images/paper.png','/assets/images/paper2.png'],
     ['/assets/images/plastic1.png','/assets/images/plastic2.png','/assets/images/plastic3.png'],
