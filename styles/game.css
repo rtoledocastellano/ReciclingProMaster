@@ -38,7 +38,7 @@ position:relative;
 }
 
 #canvas>.cube-papper{
-    background-image: url("assets/images/blue-rubish.png");  
+    background-image: url("/assets/images/blue-rubish.png");  
 }
 
 #canvas>.cube-plastic {
