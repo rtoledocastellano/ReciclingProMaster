@@ -4,11 +4,11 @@ function ReciclingProMaster() {
     this.points = 0;
     this.timeLeft = 60.00;
     this.binType = ['papper','plastic','organic','cristal'];
-    this.images = [['/assets/images/paper.png','/assets/images/paper2.png'],
-    ['/assets/images/plastic1.png','/assets/images/plastic2.png','/assets/images/plastic3.png'],
-    ['assets/images/organic1.png','assets/images/organic2.png','assets/images/organic3.png'],
-    ['assets/images/glass1.png']];
-    this.audio = [new Audio('/assets/sounds/correct.wav'),new Audio('/assets/sounds/wrong.wav')]
+    this.images = [['./assets/images/paper.png','./assets/images/paper2.png'],
+    ['./assets/images/plastic1.png','./assets/images/plastic2.png','./assets/images/plastic3.png'],
+    ['./assets/images/organic1.png','./assets/images/organic2.png','./assets/images/organic3.png'],
+    ['./assets/images/glass1.png']];
+    this.audio = [new Audio('./assets/sounds/correct.wav'),new Audio('./assets/sounds/wrong.wav')]
 
     this.random = function(num) {
         return Math.floor(Math.random()*num + 1);
@@ -38,10 +38,6 @@ function ReciclingProMaster() {
         rubish.style.left = left + 'px'; //Draw it on the canvas
         self.rubishStatus('able'); //This functions active the eventListeners
     }
-
-setInterval(changeRubish, 5000);
-setInterval(generateRubish, 3000);
-
 
     this.checkCorrect = function(e){
         let correct = -1;
