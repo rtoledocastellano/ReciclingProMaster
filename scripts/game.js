@@ -47,7 +47,7 @@ function ReciclingProMaster() {
                 correct = 1;
             }
         self.points += (correct*5);
-        self.removeItem(e); //Remove the clicked item
+        self.rubishStatus('disable'); //Remove the clicked item
         self.updatePoints(); //Update the score on screen
         self.playAudio(correct);
     }
