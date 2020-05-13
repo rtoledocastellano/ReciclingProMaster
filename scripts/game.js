@@ -47,9 +47,14 @@ function ReciclingProMaster() {
                 correct = 1;
             }
         self.points += (correct*5);
-        self.rubishStatus('disable'); //Remove the clicked item
+        self.removeItem(e); //Remove the clicked item
         self.updatePoints(); //Update the score on screen
         self.playAudio(correct);
+    }
+
+    this.removeItem = function(e) { //Remove the items once It are clicked
+        let item = e.currentTarget;
+        item.parentNode.removeChild(item);
     }
 
     this.playAudio = function(num) {
