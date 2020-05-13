@@ -16,7 +16,11 @@ function ReciclingProMaster() {
 
     this.changeCube = function() {
         var cube = document.getElementById("cube"); //Select the element in the DOM
+        /*var currentRubish = cube.getAttribute('value');*/
         var rubishType = self.random(4); //Create a new binType
+        /*while (parseInt(currentRubish) === rubishType) {
+            self.changeCube();
+        }*/
         cube.removeAttribute('class'); //Remove the current binClass
         cube.setAttribute('value',`${rubishType}`); //Set the fixed value of the bin
         cube.setAttribute('class',`cube-${self.binType[rubishType-1]}`) //Add the class
@@ -42,9 +46,9 @@ function ReciclingProMaster() {
     this.setRubbishPosition = function () { //Generation of random position in the canvas
         let top = self.random(400) + 80;
         let left = self.random(1000) + 100;
-        while (self.checkBoard(left,top) === true) { //Checks if the new element is close to an existing one
+       /* while (self.checkBoard(left,top) === true) { //Checks if the new element is close to an existing one
             self.setRubbishPosition();
-        }
+        }*/
         return [left,top];
     }
     
