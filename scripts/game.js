@@ -31,6 +31,7 @@ function ReciclingProMaster() {
         rubish.setAttribute('class',`rubish-${self.binType[rubishType-1]}`) //Add the class 
         rubish.style.backgroundImage = "url("+self.images[rubishType-1][self.random(self.images[rubishType-1].length) - 1]+")";
         var pos = self.setRubbishPosition();
+        
         parent.insertBefore(rubish,firstChild); //All the elements will be inserted before the cube
         
         rubish.style.top = pos[1] + 'px';
@@ -41,7 +42,19 @@ function ReciclingProMaster() {
     this.setRubbishPosition = function () { //Generation of random position in the canvas
         let top = self.random(400) + 80;
         let left = self.random(1000) + 100;
+        while (self.checkBoard(left,top) === true) { //Checks if the new element is close to an existing one
+            setRubbishPosition();
+        }
         return [left,top];
+    }
+    
+    this.checkBoard = function (h,v) {
+        let rubish = document.querySelectorAll("[class*=rubish]");
+        let exist = false;
+        for (let i = 0; i < rubish.length; i++) {
+            let x = parseInt(rubish[i].style.left.slice(0,-2));
+            let y = parseInt(rubish[i].style.top.slice(0,-2));
+        } return exist;
     }
 
     this.checkCorrect = function(e){
