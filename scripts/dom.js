@@ -8,9 +8,6 @@ window.onload = function() {
     //document.addEventListener('keyup',soundGame);
 }
 
-//window.prompt("Please insert the number of players");
-var game;
-
 function startGame() {
     var parent = document.getElementById('canvas');
     var intro = document.getElementById('intro');

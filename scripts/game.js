@@ -4,11 +4,11 @@ function ReciclingProMaster() {
     this.points = 0;
     this.timeLeft = 30.00;
     this.binType = ['papper','plastic','organic','cristal'];
-    this.images = [['/assets/images/paper.png','/assets/images/paper2.png'],
-    ['/assets/images/plastic1.png','/assets/images/plastic2.png','/assets/images/plastic3.png'],
-    ['assets/images/organic1.png','assets/images/organic2.png','assets/images/organic3.png'],
-    ['assets/images/glass1.png']];
-    this.audio = [new Audio('/assets/sounds/correct.wav'),new Audio('/assets/sounds/wrong.wav')]
+    this.images = [['./assets/images/paper.png','./assets/images/paper2.png'],
+    ['./assets/images/plastic1.png','./assets/images/plastic2.png','./assets/images/plastic3.png'],
+    ['./assets/images/organic1.png','./assets/images/organic2.png','./assets/images/organic3.png'],
+    ['./assets/images/glass1.png']];
+    this.audio = [new Audio('./assets/sounds/correct.wav'),new Audio('./assets/sounds/wrong.wav')]
 
     this.random = function(num) {
         return Math.floor(Math.random()*num + 1);
@@ -39,12 +39,6 @@ function ReciclingProMaster() {
         self.rubishStatus('able'); //This functions active the eventListeners
     }
 
-    this.removeItem = function(e) { //Remove the items once It are clicked
-        let item = e.currentTarget;
-        item.parentNode.removeChild(item);
-    }
-
-
     this.checkCorrect = function(e){
         let correct = -1;
         let rubish = e.currentTarget;
@@ -56,6 +50,11 @@ function ReciclingProMaster() {
         self.removeItem(e); //Remove the clicked item
         self.updatePoints(); //Update the score on screen
         self.playAudio(correct);
+    }
+
+    this.removeItem = function(e) { //Remove the items once It are clicked
+        let item = e.currentTarget;
+        item.parentNode.removeChild(item);
     }
 
     this.playAudio = function(num) {
