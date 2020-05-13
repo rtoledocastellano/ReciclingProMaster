@@ -43,12 +43,12 @@ function ReciclingProMaster() {
         let top = self.random(400) + 80;
         let left = self.random(1000) + 100;
         while (self.checkBoard(left,top) === true) { //Checks if the new element is close to an existing one
-            setRubbishPosition();
+            self.setRubbishPosition();
         }
         return [left,top];
     }
     
-    this.checkBoard = function (h,v) {
+    this.checkBoard = function (h,v) { //El navegador peta la memoria con esta funcion
         let rubish = document.querySelectorAll("[class*=rubish]");
         let exist = false;
         for (let i = 0; i < rubish.length; i++) {
