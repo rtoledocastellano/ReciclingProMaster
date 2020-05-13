@@ -30,13 +30,18 @@ function ReciclingProMaster() {
         rubish.setAttribute('value',`${rubishType}`); //Add the fixed value
         rubish.setAttribute('class',`rubish-${self.binType[rubishType-1]}`) //Add the class 
         rubish.style.backgroundImage = "url("+self.images[rubishType-1][self.random(self.images[rubishType-1].length) - 1]+")";
-  
+        var pos = self.setRubbishPosition();
         parent.insertBefore(rubish,firstChild); //All the elements will be inserted before the cube
-        let top = self.random(400) + 80;
-        let left = self.random(1000) + 100; //Generation of random position in the canvas
-        rubish.style.top = top + 'px';
-        rubish.style.left = left + 'px'; //Draw it on the canvas
+        
+        rubish.style.top = pos[1] + 'px';
+        rubish.style.left = pos[0] + 'px'; //Draw it on the canvas
         self.rubishStatus('able'); //This functions active the eventListeners
+    }
+
+    this.setRubbishPosition = function () { //Generation of random position in the canvas
+        let top = self.random(400) + 80;
+        let left = self.random(1000) + 100;
+        return [left,top];
     }
 
     this.checkCorrect = function(e){
