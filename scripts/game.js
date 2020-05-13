@@ -60,14 +60,6 @@ function ReciclingProMaster() {
 
     this.playAudio = function(num) {
         self.audio[num === -1 ? 1 : 0].play();
-        /*switch (num) {
-            case 1:
-                self.audio[0].play();
-                break;
-            case -1:
-                self.audio[1].play();
-                break;
-        }*/
     }
 
     this.rubishStatus = function(action){
