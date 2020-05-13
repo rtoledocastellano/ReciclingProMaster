@@ -2,7 +2,7 @@
 function ReciclingProMaster() {
     var self = this;
     this.points = 0;
-    this.timeLeft = 60.00;
+    this.timeLeft = 30.00;
     this.binType = ['papper','plastic','organic','cristal'];
     this.images = [['./assets/images/paper.png','./assets/images/paper2.png'],
     ['./assets/images/plastic1.png','./assets/images/plastic2.png','./assets/images/plastic3.png'],
@@ -54,14 +54,6 @@ function ReciclingProMaster() {
 
     this.playAudio = function(num) {
         self.audio[num === -1 ? 1 : 0].play();
-        /*switch (num) {
-            case 1:
-                self.audio[0].play();
-                break;
-            case -1:
-                self.audio[1].play();
-                break;
-        }*/
     }
 
     this.rubishStatus = function(action){
