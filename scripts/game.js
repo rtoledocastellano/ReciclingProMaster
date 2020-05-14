@@ -18,7 +18,7 @@ function ReciclingProMaster() {
         var cube = document.getElementById("cube"); //Select the element in the DOM
         var currentRubish = cube.getAttribute('value');
         var rubishType = self.random(4); //Create a new binType
-        while (parseInt(currentRubish) === rubishType) {
+        while (parseInt(currentRubish) === rubishType) { //Add the condition to be sure that the cube changes
             rubishType = self.random(4);
         }
         cube.removeAttribute('class'); //Remove the current binClass

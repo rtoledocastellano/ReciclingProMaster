@@ -56,7 +56,7 @@ function startGame() {
     game.init();
 }
 
-function endGame (points){
+function endGame (points) {
     var rubish = document.querySelectorAll("[class*=rubish]");
     var cube = document.getElementById('cube');
     var parent = document.getElementById('canvas');
@@ -87,7 +87,7 @@ function checkResult (elem, points) {
     }
 
     if (points < 40) {
-        score.setAttribute('id','puntuation2');
+        elem.setAttribute('id','puntuation2');
     }
     
     if (points < 20) {
