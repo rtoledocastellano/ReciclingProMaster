@@ -2,7 +2,7 @@
 function ReciclingProMaster() {
     var self = this;
     this.points = 0;
-    this.timeLeft = 5.00;
+    this.timeLeft = 30.00;
     this.binType = ['papper','plastic','organic','cristal'];
     this.images = [['./assets/images/paper.png','./assets/images/paper2.png'],
     ['./assets/images/plastic1.png','./assets/images/plastic2.png','./assets/images/plastic3.png'],
@@ -10,17 +10,17 @@ function ReciclingProMaster() {
     ['./assets/images/glass1.png']];
     this.audio = [new Audio('./assets/sounds/correct.wav'),new Audio('./assets/sounds/wrong.wav')]
 
-    this.random = function(num) {
-        return Math.floor(Math.random()*num + 1);
+    this.random = function(num, offset = 1) {
+        return Math.floor(Math.random()*num + offset);
     }
 
     this.changeCube = function() {
         var cube = document.getElementById("cube"); //Select the element in the DOM
-        /*var currentRubish = cube.getAttribute('value');*/
+        var currentRubish = cube.getAttribute('value');
         var rubishType = self.random(4); //Create a new binType
-        /*while (parseInt(currentRubish) === rubishType) {
-            self.changeCube();
-        }*/
+        while (parseInt(currentRubish) === rubishType) {
+            rubishType = self.random(4);
+        }
         cube.removeAttribute('class'); //Remove the current binClass
         cube.setAttribute('value',`${rubishType}`); //Set the fixed value of the bin
         cube.setAttribute('class',`cube-${self.binType[rubishType-1]}`) //Add the class
@@ -129,7 +129,8 @@ function ReciclingProMaster() {
             document.getElementById('timer').innerHTML = `<i class="fas fa-clock"></i>  ${self.timeLeft.toFixed(2)}`;
         }
     },10);
-        var differentCube = setInterval(this.changeCube,4000);
+        var differentCube = setInterval(this.changeCube,3000);
         var rubishAddition = setInterval(this.generateRubish,1500);
     }
 }
+
