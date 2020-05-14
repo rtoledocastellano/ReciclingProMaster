@@ -8,6 +8,14 @@ window.onload = function() {
     //document.addEventListener('keyup',soundGame);
 }
 
+var numPlayer = window.prompt("Introduzca el número de jugadores");
+
+while ((typeof numPlayer != 'number') || (numPlayer > 4)) {
+    numPlayer = window.prompt("Por favor inserte un número entre 1 y 4");
+    console.log(typeOf(numPlayer));
+    console.log(numPlayer);
+};
+
 function startGame() {
     var parent = document.getElementById('canvas');
     var intro = document.getElementById('intro');
@@ -33,8 +41,48 @@ function startGame() {
     
     game = new ReciclingProMaster (); 
     game.init();
+}
 
-    if (game.timeLeft <= 0) {
-        endGame(game.points);
+function endGame (points){
+    var rubish = document.querySelectorAll("[class*=rubish]");
+    var cube = document.getElementById('cube');
+    var parent = document.getElementById('canvas');
+
+    //Remove all the waste that is on the screen
+    for (var i=0; i < rubish.length; i++) {
+        parent.removeChild(rubish[i]);
     }
+
+    //Remove the cube
+    parent.removeChild(cube);
+
+    //create a new div to insert the score
+    var finalScore = document.createElement('div');
+    checkResult(finalScore,points);
+    parent.appendChild(result);
+}
+
+function checkResult (elem, points) {
+    elem.innerHTML = `${points} <i class="fas fa-globe-europe"></i>`;
+    
+    if (points >= 60) {
+        score.setAttribute('id','puntuation4');
+    }
+
+    if (points < 60) {
+        score.setAttribute('id','puntuation3');
+    }
+
+    if (points < 40) {
+        score.setAttribute('id','puntuation2');
+    }
+    
+    if (points < 20) {
+        score.setAttribute('id','puntuation1');
+    }
+    
+    if (points < 0) {
+    score.setAttribute('id','puntuation0');
+    }
+
 }

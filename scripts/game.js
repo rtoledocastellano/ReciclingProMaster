@@ -2,7 +2,7 @@
 function ReciclingProMaster() {
     var self = this;
     this.points = 0;
-    this.timeLeft = 30.00;
+    this.timeLeft = 5.00;
     this.binType = ['papper','plastic','organic','cristal'];
     this.images = [['./assets/images/paper.png','./assets/images/paper2.png'],
     ['./assets/images/plastic1.png','./assets/images/plastic2.png','./assets/images/plastic3.png'],
@@ -122,7 +122,7 @@ function ReciclingProMaster() {
             clearInterval(rubishAddition);
             document.getElementById('timer').innerHTML = '<i class="fas fa-clock"></i>  0.00';
             self.rubishStatus('disable');
-            self.endGame(self.points);
+            endGame(self.points);
         }
         else {
             self.timeLeft -= 0.01;
@@ -131,52 +131,5 @@ function ReciclingProMaster() {
     },10);
         var differentCube = setInterval(this.changeCube,4000);
         var rubishAddition = setInterval(this.generateRubish,1500);
-        
-        
     }
-
-    this.endGame = function (){
-        var rubish = document.querySelectorAll("[class*=rubish]");
-        var cube = document.getElementById('cube');
-        var parent = document.getElementById('canvas');
-    
-        //Remove all the waste that is on the screen
-        for (var i=0; i < rubish.length; i++) {
-            parent.removeChild(rubish[i]);
-        }
-    
-        //Remove the cube
-        parent.removeChild(cube);
-    
-        //create a new div to insert
-        var score = document.createElement('div');
-        
-        if (self.points >= 60) {
-            score.setAttribute('id','puntuation4');
-            score.innerHTML = `${self.points} <i class="fas fa-globe-europe"></i>`
-        }
-
-        if (self.points < 60) {
-            score.setAttribute('id','puntuation3');
-            score.innerHTML = `${self.points} <i class="fas fa-globe-europe"></i>`
-        }
-
-        if (self.points < 40) {
-            score.setAttribute('id','puntuation2');
-            score.innerHTML = `${self.points} <i class="fas fa-globe-europe"></i>`
-        }
-        
-        if (self.points < 20) {
-            score.setAttribute('id','puntuation1');
-            score.innerHTML = `${self.points} <i class="fas fa-globe-europe"></i>`
-        }
-        
-        if (self.points < 0) {
-        score.setAttribute('id','puntuation0');
-        score.innerHTML = `${self.points} <i class="fas fa-globe-europe"></i>`
-        }
-        
-        parent.appendChild(score);
-    }
-
 }
