@@ -44,11 +44,11 @@ function ReciclingProMaster() {
     }
 
     this.setRubbishPosition = function () { //Generation of random position in the canvas
-        let top = self.random(400) + 80;
-        let left = self.random(1000) + 100;
-       /* while (self.checkBoard(left,top) === true) { //Checks if the new element is close to an existing one
+        let top = self.random(400,80);
+        let left = self.random(1000,100);
+        if (self.checkBoard(left,top) === true) { //Checks if the new element is close to an existing one
             self.setRubbishPosition();
-        }*/
+        }
         return [left,top];
     }
     
