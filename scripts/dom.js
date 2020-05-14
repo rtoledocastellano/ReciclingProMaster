@@ -8,13 +8,24 @@ window.onload = function() {
     //document.addEventListener('keyup',soundGame);
 }
 
-var numPlayer = window.prompt("Introduzca el número de jugadores");
+playerNumber();
+function playerNumber() {
+    var numPlayer = window.prompt("Introduzca el número de jugadores");
+    while ((typeof(numPlayer) != 'string') || (numPlayer > 4)) {
+        numPlayer = window.prompt("Por favor inserte un número entre 1 y 4");
+    };
+    numPlayer = parseInt(numPlayer);
+    var names = askNames(numPlayer);
+    return names;
+}
 
-while ((typeof numPlayer != 'number') || (numPlayer > 4)) {
-    numPlayer = window.prompt("Por favor inserte un número entre 1 y 4");
-    console.log(typeOf(numPlayer));
-    console.log(numPlayer);
-};
+function askNames(num){
+    var names = [];
+    for (let i = 0; i <= num - 1; i++) {
+        names[i] = window.prompt(`Introduzca el nombre del jugador ${i+1}`);
+    }
+    return names;
+}
 
 function startGame() {
     var parent = document.getElementById('canvas');
