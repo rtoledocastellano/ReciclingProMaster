@@ -61,13 +61,13 @@ function ReciclingProMaster() {
             if (x<h && h<x+60 && y-60<v && v<y){ //Checks if the first corner is in the middle of the existing square
                 exist = true;
             }
-            if (x<h && h<x+60 && y-60<v-60 && v-60<y){ //Checks if the second corner is in the middle of the existing square
+            if (x<(h+60) && (h+60)<(x+60) && (y-60)<v && v<y){ //Checks if the second corner is in the middle of the existing square
                 exist = true;
             }
             if (x<h+60 && h+60<x+60 && y-60<v-60 && v-60<y){ //Checks if the third corner is in the middle of the existing square
                 exist = true;
             }
-            if (x<h+60 && h+60<x+60 && y-60<v && v<y){ //Checks if the third corner is in the middle of the existing square
+            if (x<h && h<x+60 && y-60<v-60 && v-60<y){ //Checks if the third corner is in the middle of the existing square
                 exist = true;
             }
         } return exist;
