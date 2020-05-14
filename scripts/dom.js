@@ -8,7 +8,9 @@ window.onload = function() {
     //document.addEventListener('keyup',soundGame);
 }
 
-playerNumber();
+//var playerNames = playerNumber();
+//var numOfPlayers = playerNames.length;
+
 function playerNumber() {
     var numPlayer = window.prompt("Introduzca el número de jugadores");
     while ((typeof(numPlayer) != 'string') || (numPlayer > 4)) {
@@ -70,18 +72,18 @@ function endGame (points){
     //create a new div to insert the score
     var finalScore = document.createElement('div');
     checkResult(finalScore,points);
-    parent.appendChild(result);
+    parent.appendChild(finalScore);
 }
 
 function checkResult (elem, points) {
     elem.innerHTML = `${points} <i class="fas fa-globe-europe"></i>`;
     
     if (points >= 60) {
-        score.setAttribute('id','puntuation4');
+        elem.setAttribute('id','puntuation4');
     }
 
     if (points < 60) {
-        score.setAttribute('id','puntuation3');
+        elem.setAttribute('id','puntuation3');
     }
 
     if (points < 40) {
@@ -89,11 +91,11 @@ function checkResult (elem, points) {
     }
     
     if (points < 20) {
-        score.setAttribute('id','puntuation1');
+        elem.setAttribute('id','puntuation1');
     }
     
     if (points < 0) {
-    score.setAttribute('id','puntuation0');
+        elem.setAttribute('id','puntuation0');
     }
 
 }
