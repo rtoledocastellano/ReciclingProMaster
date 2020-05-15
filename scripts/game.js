@@ -2,7 +2,7 @@
 function ReciclingProMaster() {
     var self = this;
     this.points = 0;
-    this.timeLeft = 10.00;
+    this.timeLeft = 30.00;
     this.binType = ['papper','plastic','organic','cristal'];
     this.images = [['./assets/images/paper.png','./assets/images/paper2.png'],
     ['./assets/images/plastic1.png','./assets/images/plastic2.png','./assets/images/plastic3.png'],
@@ -15,10 +15,11 @@ function ReciclingProMaster() {
     }
 
     this.changeCube = function() {
-        var cube = document.getElementById("cube"); //Select the element in the DOM
-        var currentRubish = cube.getAttribute('value');
-        var rubishType = self.random(4); //Create a new binType
-        while (parseInt(currentRubish) === rubishType) { //Add the condition to be sure that the cube changes
+        let cube = document.getElementById("cube"); //Select the element in the DOM
+        let currentRubish = cube.getAttribute('value');
+        let rubishType = self.random(4); //Create a new binType
+        //Add the condition to be sure that the cube changes
+        while (parseInt(currentRubish) === rubishType) { 
             rubishType = self.random(4);
         }
         cube.removeAttribute('class'); //Remove the current binClass
@@ -34,25 +35,25 @@ function ReciclingProMaster() {
         rubish.setAttribute('value',`${rubishType}`); //Add the fixed value
         rubish.setAttribute('class',`rubish-${self.binType[rubishType-1]}`) //Add the class 
         rubish.style.backgroundImage = "url("+self.images[rubishType-1][self.random(self.images[rubishType-1].length) - 1]+")";
-        var pos = self.setRubbishPosition();
+        let pos = self.setRubbishPosition();
         
         parent.insertBefore(rubish,firstChild); //All the elements will be inserted before the cube
         
         rubish.style.top = pos[1] + 'px';
         rubish.style.left = pos[0] + 'px'; //Draw it on the canvas
-        self.rubishStatus('able'); //This functions active the eventListeners
+        self.rubishStatus(); //This functions active the eventListeners
     }
 
     this.setRubbishPosition = function () { //Generation of random position in the canvas
         let left = self.random(1000,100);
-        let top = self.random(400,80);
+        let top = self.random(350,80);
         if (self.checkBoard(left,top) === true) { //Checks if the new element is close to an existing one
             self.setRubbishPosition();
         }
         return [left,top];
     }
-    
-    this.checkBoard = function (h,v) { //El navegador peta la memoria con esta funcion
+    //Wrong conditions on this function:
+    this.checkBoard = function (h,v) { 
         let rubish = document.querySelectorAll("[class*=rubish]");
         let exist = false;
         //var size = 60;
@@ -74,7 +75,7 @@ function ReciclingProMaster() {
             }*/
         } return exist;
     }
-
+    //Checks of the clicked element is correct
     this.checkCorrect = function(e){
         let correct = -1;
         let rubish = e.currentTarget;
@@ -87,35 +88,28 @@ function ReciclingProMaster() {
         self.updatePoints(); //Update the score on screen
         self.playAudio(correct);
     }
-
+    //This function deletes from the board the clicked element
     this.removeItem = function(e) { //Remove the items once It are clicked
         let item = e.currentTarget;
         item.parentNode.removeChild(item);
     }
-
+    //Gets the result from the clicked element and sounds in consequence
     this.playAudio = function(num) {
         self.audio[num === -1 ? 1 : 0].play();
     }
-
-    this.rubishStatus = function(action){
+    //Add EventListeners to rubish on the board
+    this.rubishStatus = function(){
         let rubish = document.querySelectorAll("[class*=rubish]")
-        if (action === 'able'){
-            for (var i= 0; i<rubish.length;i++) {
+        for (var i= 0; i<rubish.length;i++) {
             rubish[i].addEventListener('click',self.checkCorrect);
-            }
-        }
-        if (action === 'disable'){
-            for (var i= 0; i<rubish.length;i++) {
-            rubish[i].removeEventListener('click',self.checkCorrect);
-            }
         }
     }
-
+    //Updates the score in the screen
     this.updatePoints = function() {
         let score = document.getElementById('score');
         score.innerHTML = `${self.points} <i class="fas fa-globe-europe"></i>`;
     }
-
+    //Function to Inicialize and Finish the Game
     this.init = function() {
         var downloadTimer = setInterval(function(){
         if (self.timeLeft <= 0) {
@@ -123,7 +117,6 @@ function ReciclingProMaster() {
             clearInterval(differentCube);
             clearInterval(rubishAddition);
             document.getElementById('timer').innerHTML = '<i class="fas fa-clock"></i>  0.00';
-            self.rubishStatus('disable');
             endGame(self.points);
         }
         else {
