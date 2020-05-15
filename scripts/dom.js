@@ -10,27 +10,29 @@ window.onload = function() {
 //var numOfPlayers = playerNames.length;
 
 function playerNumber() {
-    var numPlayer = window.prompt("Introduzca el número de jugadores");
+    let numPlayer = window.prompt("Introduzca el número de jugadores");
     while ((typeof(numPlayer) != 'string') || (numPlayer > 4)) {
         numPlayer = window.prompt("Por favor inserte un número entre 1 y 4");
     };
     numPlayer = parseInt(numPlayer);
-    var names = askNames(numPlayer);
+    let names = askNames(numPlayer);
     return names;
 }
 
 function askNames(num){
-    var names = [];
+    let names = [];
     for (let i = 0; i <= num - 1; i++) {
         names[i] = window.prompt(`Introduzca el nombre del jugador ${i+1}`);
     }
     return names;
 }
-
+//This function deletes the intro and insert the elements to the DOM to Play
 function startGame() {
+    //Get the existing elements on the DOM
     var parent = document.getElementById('canvas');
     var intro = document.getElementById('intro');
-            
+    
+    //Create the needed elementes and set the Attributes
     var cube = document.createElement('div');
     cube.setAttribute('id','cube');
     cube.setAttribute('class','cube-papper');
@@ -43,8 +45,10 @@ function startGame() {
     score.setAttribute('id','score');
     score.innerHTML = '0 <i class="fas fa-globe-europe"></i>';
     
-    parent.removeChild(intro); //Eliminamos la intro del juego
+    //Delete the intro from the DOM
+    parent.removeChild(intro); 
     
+    //Insert the elementes to the DOM
     parent.appendChild(timer);
     parent.appendChild(score);
     parent.appendChild(cube);
@@ -53,10 +57,11 @@ function startGame() {
     game = new ReciclingProMaster (); 
     game.init();
 }
-
+//This function change the DOM between game and game
 function reStartGame() {
     let parent = document.getElementById('canvas');
     
+    //Deleting elements not needed
     let scoring = document.getElementById('score');
     parent.removeChild(scoring);
     let puntuation = document.querySelectorAll("[class*=puntuation]")
@@ -64,6 +69,7 @@ function reStartGame() {
         parent.removeChild(puntuation[i]);
     }
     
+    //Inserting needed elements to play
     let intro = document.createElement('div');
     intro.setAttribute('id','intro');
     parent.appendChild(intro);
@@ -74,18 +80,20 @@ function reStartGame() {
         }
     }
 }
-
+//Function to finish the game and show your score with a friendly message
 function endGame (points) {
-    var rubish = document.querySelectorAll("[class*=rubish]");
-    var parent = document.getElementById('canvas');
+    let rubish = document.querySelectorAll("[class*=rubish]");
+    let parent = document.getElementById('canvas');
 
     //Remove all the waste that is on the screen
-    for (var i=0; i < rubish.length; i++) {
+    for (let i=0; i < rubish.length; i++) {
         parent.removeChild(rubish[i]);
     }
+    //Remove the cube
+    parent.removeChild(document.getElementById('cube'));
 
     //create a new div to insert the score
-    var finalScore = document.createElement('div');
+    let finalScore = document.createElement('div');
     checkResult(finalScore,points);
     parent.appendChild(finalScore);
 
@@ -95,28 +103,14 @@ function endGame (points) {
         }
     }
 }
-
+//This function checks the score and return you a message
 function checkResult (elem, points) {
     elem.innerHTML = `${points} <i class="fas fa-globe-europe"></i>`;
-    
-    if (points >= 60) {
-        elem.setAttribute('class','puntuation4');
+    elem.setAttribute('class','puntuation4');
+    const punt = [20,40,60,80];
+    for (var k = 3; k > 0; k--) {
+        if(points < punt[k]){
+            elem.setAttribute('class',`puntuation${k}`);   
+        }
     }
-
-    if (points < 60) {
-        elem.setAttribute('class','puntuation3');
-    }
-
-    if (points < 40) {
-        elem.setAttribute('class','puntuation2');
-    }
-    
-    if (points < 20) {
-        elem.setAttribute('class','puntuation1');
-    }
-    
-    if (points < 0) {
-        elem.setAttribute('class','puntuation0');
-    }
-
 }
