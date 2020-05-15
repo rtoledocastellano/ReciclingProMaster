@@ -2,7 +2,7 @@
 function ReciclingProMaster() {
     var self = this;
     this.points = 0;
-    this.timeLeft = 30.00;
+    this.timeLeft = 10.00;
     this.binType = ['papper','plastic','organic','cristal'];
     this.images = [['./assets/images/paper.png','./assets/images/paper2.png'],
     ['./assets/images/plastic1.png','./assets/images/plastic2.png','./assets/images/plastic3.png'],
@@ -44,8 +44,8 @@ function ReciclingProMaster() {
     }
 
     this.setRubbishPosition = function () { //Generation of random position in the canvas
-        let top = self.random(400,80);
         let left = self.random(1000,100);
+        let top = self.random(400,80);
         if (self.checkBoard(left,top) === true) { //Checks if the new element is close to an existing one
             self.setRubbishPosition();
         }
@@ -55,21 +55,23 @@ function ReciclingProMaster() {
     this.checkBoard = function (h,v) { //El navegador peta la memoria con esta funcion
         let rubish = document.querySelectorAll("[class*=rubish]");
         let exist = false;
+        //var size = 60;
+        //var corner = [[h,v],[h+size,v],[h+size,v-size],[h,v-size]]
         for (let i = 0; i < rubish.length; i++) {
             let x = parseInt(rubish[i].style.left.slice(0,-2));
             let y = parseInt(rubish[i].style.top.slice(0,-2));
             if (x<h && h<x+60 && y-60<v && v<y){ //Checks if the first corner is in the middle of the existing square
                 exist = true;
             }
-            if (x<(h+60) && (h+60)<(x+60) && (y-60)<v && v<y){ //Checks if the second corner is in the middle of the existing square
+            if (x<(h+60) && (h+60)<(x+60) && (y<v && v<y)){ //Checks if the second corner is in the middle of the existing square
                 exist = true;
-            }
+            }/*
             if (x<h+60 && h+60<x+60 && y-60<v-60 && v-60<y){ //Checks if the third corner is in the middle of the existing square
                 exist = true;
             }
             if (x<h && h<x+60 && y-60<v-60 && v-60<y){ //Checks if the third corner is in the middle of the existing square
                 exist = true;
-            }
+            }*/
         } return exist;
     }
 

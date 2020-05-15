@@ -4,8 +4,6 @@ window.onload = function() {
             startGame()
         }
     }
-    //document.addEventListener('keyup',startGame);//Al pulsar espacio queremos cambiar de escena
-    //document.addEventListener('keyup',soundGame);
 }
 
 //var playerNames = playerNumber();
@@ -56,9 +54,29 @@ function startGame() {
     game.init();
 }
 
+function reStartGame() {
+    let parent = document.getElementById('canvas');
+    
+    let scoring = document.getElementById('score');
+    parent.removeChild(scoring);
+    let puntuation = document.querySelectorAll("[class*=puntuation]")
+    for (let i = 0; i < puntuation.length; i++) {
+        parent.removeChild(puntuation[i]);
+    }
+    
+    let intro = document.createElement('div');
+    intro.setAttribute('id','intro');
+    parent.appendChild(intro);
+
+    document.body.onkeyup = function(e){
+        if(e.keyCode == 32){
+            startGame()
+        }
+    }
+}
+
 function endGame (points) {
     var rubish = document.querySelectorAll("[class*=rubish]");
-    var cube = document.getElementById('cube');
     var parent = document.getElementById('canvas');
 
     //Remove all the waste that is on the screen
@@ -66,36 +84,39 @@ function endGame (points) {
         parent.removeChild(rubish[i]);
     }
 
-    //Remove the cube
-    parent.removeChild(cube);
-
     //create a new div to insert the score
     var finalScore = document.createElement('div');
     checkResult(finalScore,points);
     parent.appendChild(finalScore);
+
+    document.body.onkeyup = function(e){
+        if(e.keyCode == 32){
+            reStartGame()
+        }
+    }
 }
 
 function checkResult (elem, points) {
     elem.innerHTML = `${points} <i class="fas fa-globe-europe"></i>`;
     
     if (points >= 60) {
-        elem.setAttribute('id','puntuation4');
+        elem.setAttribute('class','puntuation4');
     }
 
     if (points < 60) {
-        elem.setAttribute('id','puntuation3');
+        elem.setAttribute('class','puntuation3');
     }
 
     if (points < 40) {
-        elem.setAttribute('id','puntuation2');
+        elem.setAttribute('class','puntuation2');
     }
     
     if (points < 20) {
-        elem.setAttribute('id','puntuation1');
+        elem.setAttribute('class','puntuation1');
     }
     
     if (points < 0) {
-        elem.setAttribute('id','puntuation0');
+        elem.setAttribute('class','puntuation0');
     }
 
 }
