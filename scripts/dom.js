@@ -1,5 +1,4 @@
 window.onload = function () {
-  checkAudio();
   document.body.onkeyup = function (e) {
     if (e.keyCode == 32) {
       startGame();
@@ -11,8 +10,6 @@ window.onload = function () {
 //var numOfPlayers = playerNames.length;
 var soundOn = false;
 var song = new Audio('./assets/sounds/game.mp3');
-
-
 
 function playerNumber() {
   let numPlayer = window.prompt("Introduzca el número de jugadores");
@@ -33,6 +30,7 @@ function askNames(num) {
 }
 //This function deletes the intro and insert the elements to the DOM to Play
 function startGame() {
+  checkAudio();
   //Get the existing elements on the DOM
   var parent = document.getElementById('canvas');
   var intro = document.getElementById('intro');
