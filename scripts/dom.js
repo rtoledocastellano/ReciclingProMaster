@@ -108,7 +108,7 @@ function checkResult (elem, points) {
     elem.innerHTML = `${points} <i class="fas fa-globe-europe"></i>`;
     elem.setAttribute('class','puntuation4');
     const punt = [20,40,60,80];
-    for (var k = 3; k > 0; k--) {
+    for (var k = 3; k >= 0; k--) {
         if(points < punt[k]){
             elem.setAttribute('class',`puntuation${k}`);   
         }

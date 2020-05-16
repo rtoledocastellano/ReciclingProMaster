@@ -2,7 +2,7 @@
 function ReciclingProMaster() {
     var self = this;
     this.points = 0;
-    this.timeLeft = 30.00;
+    this.timeLeft = 60.00;
     this.binType = ['papper','plastic','organic','cristal'];
     this.images = [['./assets/images/paper.png','./assets/images/paper2.png'],
     ['./assets/images/plastic1.png','./assets/images/plastic2.png','./assets/images/plastic3.png'],
@@ -61,18 +61,18 @@ function ReciclingProMaster() {
         for (let i = 0; i < rubish.length; i++) {
             let x = parseInt(rubish[i].style.left.slice(0,-2));
             let y = parseInt(rubish[i].style.top.slice(0,-2));
-            if (x<h && h<x+60 && y-60<v && v<y){ //Checks if the first corner is in the middle of the existing square
+            if (x<h && h<x+60 && y<v && v<y+60){ //Checks if the first corner is in the middle of the existing square
                 exist = true;
             }
-            if (x<(h+60) && (h+60)<(x+60) && (y<v && v<y)){ //Checks if the second corner is in the middle of the existing square
-                exist = true;
-            }/*
-            if (x<h+60 && h+60<x+60 && y-60<v-60 && v-60<y){ //Checks if the third corner is in the middle of the existing square
+            if (x<h+60 && h+60<x+60 && y<v && v<y+60){ //Checks if the second corner is in the middle of the existing square
                 exist = true;
             }
-            if (x<h && h<x+60 && y-60<v-60 && v-60<y){ //Checks if the third corner is in the middle of the existing square
+            if (x<h+60 && h+60<x+60 && y<v+60 && v+60<y+60){ //Checks if the third corner is in the middle of the existing square
                 exist = true;
-            }*/
+            }
+            if (x<h && h<x+60 && y<v+60 && v+60<y+60){ //Checks if the third corner is in the middle of the existing square
+                exist = true;
+            }
         } return exist;
     }
     //Checks of the clicked element is correct
