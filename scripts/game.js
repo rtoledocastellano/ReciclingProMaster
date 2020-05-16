@@ -9,7 +9,6 @@ function ReciclingProMaster() {
   ['./assets/images/organic1.png', './assets/images/organic2.png', './assets/images/organic3.png'],
   ['./assets/images/glass1.png']];
   this.audio = [new Audio('./assets/sounds/correct.wav'), new Audio('./assets/sounds/wrong.wav')]
-  this.audio.volume = 0.2;
 
   this.random = function (num, offset = 1) {
     return Math.floor(Math.random() * num + offset);
@@ -87,7 +86,7 @@ function ReciclingProMaster() {
     item.classList.add('hidden');
     setTimeout(function() {
       item.parentNode.removeChild(item)
-    }, 1500);
+    }, 750);
   }
   //Gets the result from the clicked element and sounds in consequence
   this.playAudio = function (num) {

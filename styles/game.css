@@ -121,7 +121,7 @@ position:relative;
 
 .hidden {
   filter: grayscale(100%) drop-shadow(10px 10px 10px white);
-  transition: all 1s ease-out;
+  transition: all 500ms ease-out;
 }
 
 

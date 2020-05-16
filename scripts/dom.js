@@ -1,13 +1,20 @@
 window.onload = function () {
   document.body.onkeyup = function (e) {
     if (e.keyCode == 32) {
-      startGame()
+      startGame();
+    }
+    if (e.keyCode == 17) {
+      checkAudio();
     }
   }
 }
 
 //var playerNames = playerNumber();
 //var numOfPlayers = playerNames.length;
+var soundOn = false;
+var song = new Audio('./assets/sounds/game.mp3');
+checkAudio();
+
 
 function playerNumber() {
   let numPlayer = window.prompt("Introduzca el número de jugadores");
@@ -113,4 +120,18 @@ function checkResult(elem, points) {
       elem.setAttribute('class', `puntuation${k}`);
     }
   }
+}
+
+function checkAudio() {
+  switch (soundOn) {
+    case true:
+      song.pause();
+      break;
+    case false:
+      song.play();
+      song.volume = 0.3;
+      song.loop = true;
+      break;
+  }
+  !soundOn;
 }
