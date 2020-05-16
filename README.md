@@ -21,6 +21,6 @@ https://rtoledocastellano.github.io/ReciclingProMaster/
 
 ### **Screenshoots**
 
-![alt text](./assets/ReciclingProMaster.gif);
+![alt text](assets/images/ReciclingProMaster.gif);
 
 
