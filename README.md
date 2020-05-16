@@ -5,7 +5,7 @@ The main target of this game is to teach how to reclycle for children (or maybe 
 
 Who will throw more rubbish in the correct container?
 
-### **Target**
+### **Technology**
 
 To build this game we used the fabolous technolgy of Vanilla JS
 

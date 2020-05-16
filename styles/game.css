@@ -119,5 +119,10 @@ position:relative;
     background-image: url('../assets/images/greta4.png');
 }
 
+.hidden {
+  filter: grayscale(100%) drop-shadow(10px 10px 10px white);
+  transition: all 1s ease-out;
+}
+
 
 
