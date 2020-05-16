@@ -1,19 +1,17 @@
 window.onload = function () {
+  checkAudio();
   document.body.onkeyup = function (e) {
     if (e.keyCode == 32) {
       startGame();
     }
-    if (e.keyCode == 17) {
-      checkAudio();
-    }
-  }
+  } 
 }
 
 //var playerNames = playerNumber();
 //var numOfPlayers = playerNames.length;
 var soundOn = false;
 var song = new Audio('./assets/sounds/game.mp3');
-checkAudio();
+
 
 
 function playerNumber() {
